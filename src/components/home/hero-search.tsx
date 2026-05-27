@@ -9,9 +9,6 @@ import { PassengerSelector } from "@/components/search/passenger-selector";
 import { DateRangePicker } from "@/components/search/date-picker";
 import type { Airport } from "@/data/airports";
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=2850&q=80";
-
 const TRIP_TYPES = ["Solo ida", "Ida y vuelta"] as const;
 type TripType = (typeof TRIP_TYPES)[number];
 
@@ -43,18 +40,15 @@ function Divider() {
 
 export function HeroSearchSection() {
   const [tripType, setTripType] = useState<TripType>("Ida y vuelta");
-
   const [originText, setOriginText] = useState("");
   const [destText, setDestText] = useState("");
   const [originAirport, setOriginAirport] = useState<Airport | null>(null);
   const [destAirport, setDestAirport] = useState<Airport | null>(null);
-
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [adults, setAdults] = useState(1);
   const [childrenCount, setChildrenCount] = useState(0);
   const [infants, setInfants] = useState(0);
-
   const [swapKey, setSwapKey] = useState(0);
 
   const swapLocations = () => {
@@ -77,12 +71,10 @@ export function HeroSearchSection() {
       alert("Por favor selecciona un origen y destino de la lista desplegable.");
       return;
     }
-
     if (!startDate) {
       alert("Por favor selecciona la fecha de salida.");
       return;
     }
-
     if (tripType === "Ida y vuelta" && !endDate) {
       alert("Por favor selecciona la fecha de regreso.");
       return;
@@ -92,7 +84,6 @@ export function HeroSearchSection() {
       tripType === "Solo ida" || !endDate
         ? startDate
         : `${startDate}+${endDate}`;
-
     const passengerSegment = `${adults}-${childrenCount}-${infants}`;
     const url = `http://reservas.viajaamerica.com/vuelos/${originIATA}-${destIATA}/${dateSegment}/${passengerSegment}`;
 
@@ -101,15 +92,17 @@ export function HeroSearchSection() {
 
   return (
     <section className="relative flex min-h-[100dvh] flex-col items-center justify-center">
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden bg-gray-900">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute z-0 h-full w-full object-cover object-center"
+        >
+          <source src="/herosection.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/40 to-[var(--brand-blue-dark)]/90" />
-        <img
-          src={HERO_IMAGE}
-          alt="Viaja América"
-          className="h-full w-full object-cover object-center"
-          loading="eager"
-          fetchPriority="high"
-        />
       </div>
 
       <div className="container relative z-20 mx-auto flex w-full max-w-6xl flex-col items-center px-4 pt-16 sm:pt-24 md:pt-32 pb-16 md:px-8">

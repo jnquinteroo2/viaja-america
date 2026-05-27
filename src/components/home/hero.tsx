@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -23,17 +22,18 @@ export function HeroSection() {
     >
       <motion.div 
         style={{ y, opacity }}
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full bg-gray-900"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background/90 z-10" />
-        <Image 
-          src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80" 
-          alt="Viaja América Luxury Travel"
-          fill
-          sizes="100vw"
-          priority
-          className="object-cover object-center"
-        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background/90 z-10 pointer-events-none" />
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/herosection.mp4" type="video/mp4" />
+        </video>
       </motion.div>
 
       <div className="container relative z-20 mx-auto px-6 md:px-12 text-center mt-20">
