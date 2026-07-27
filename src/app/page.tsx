@@ -3,7 +3,7 @@ import { DestinationsSection } from "@/components/home/destinations";
 import { CorporateSection } from "@/components/home/corporate";
 import { MessageCircle } from "lucide-react";
 
-const WA_NUMBER = "573007980870";
+const WA_NUMBER = "573187080678";
 const WA_MESSAGE = encodeURIComponent("Hola, estoy interesado en conocer los paquetes de viaje.");
 
 export default function Home() {

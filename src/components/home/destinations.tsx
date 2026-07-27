@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { ArrowRight, MapPin, MessageCircle } from "lucide-react";
 import Link from "next/link";
 
-const WHATSAPP_NUMBER = "573007980870";
+const WHATSAPP_NUMBER = "573187080678";
 
 const destinations = [
   {
@@ -52,11 +52,11 @@ const destinations = [
 
 export function DestinationsSection() {
   return (
-    <section className="py-24 md:py-32 relative z-10" style={{ backgroundColor: "#162032" }}>
+    <section className="py-24 md:py-32 relative z-10 bg-surface-navy-alt">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-2xl">
-            <h2 className="font-medium tracking-wider uppercase mb-4 text-sm" style={{ color: "#24759e" }}>
+            <h2 className="font-medium tracking-wider uppercase mb-4 text-sm text-brand-blue-light">
               Nuestros Destinos
             </h2>
             <h3 className="text-4xl md:text-5xl font-heading font-semibold tracking-tight text-white">
@@ -65,8 +65,7 @@ export function DestinationsSection() {
           </div>
           <Link
             href="/destinations"
-            className="flex items-center gap-2 font-medium group transition-colors hover:opacity-80"
-            style={{ color: "#24759e" }}
+            className="flex items-center gap-2 font-medium group text-brand-blue-light transition-colors hover:opacity-80"
           >
             Ver todos los destinos
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -83,10 +82,9 @@ export function DestinationsSection() {
             return (
               <Card
                 key={dest.id}
-                className={`group overflow-hidden rounded-2xl border-none shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer ${
+                className={`group overflow-hidden rounded-2xl border-none bg-surface-navy-card shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer focus-within:shadow-xl ${
                   dest.featured ? "md:col-span-2 lg:col-span-2 xl:col-span-2" : ""
                 }`}
-                style={{ backgroundColor: "#1c2739" }}
               >
                 <div className="relative h-80 md:h-[400px] w-full overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
@@ -108,12 +106,12 @@ export function DestinationsSection() {
                       {dest.title}
                     </h4>
 
-                    <div className="mt-4 opacity-0 h-0 group-hover:opacity-100 group-hover:h-auto transition-all duration-500">
+                    <div className="mt-4 h-0 opacity-0 transition-all duration-500 group-hover:h-auto group-hover:opacity-100 group-focus-within:h-auto group-focus-within:opacity-100">
                       <a
                         href={waLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-white font-medium border-b border-white pb-1 hover:opacity-80 transition-opacity"
+                        className="inline-flex items-center gap-2 rounded-sm text-white font-medium border-b border-white pb-1 hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-opacity"
                       >
                         <MessageCircle className="w-4 h-4" />
                         Consultar por WhatsApp <ArrowRight className="w-4 h-4" />

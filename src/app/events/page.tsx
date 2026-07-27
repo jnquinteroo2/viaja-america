@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Check, ArrowRight } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
 
@@ -55,22 +56,27 @@ const EVENT_SECTIONS = [
 
 export default function EventsPage() {
   return (
-    <main className="min-h-screen bg-white pt-24">
+    <main className="min-h-screen bg-white pt-20">
       <section className="relative h-[45vh] min-h-[400px] w-full overflow-hidden">
-        <div className="absolute inset-0">
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        >
           <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/40 to-[var(--brand-blue-dark)]/90" />
-          <motion.img
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+          <Image
             src={HERO_IMAGE}
             alt="Eventos"
-            className="h-full w-full object-cover"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover"
           />
-        </div>
+        </motion.div>
         <div className="container relative z-20 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 text-center">
           <BlurFade delay={0.3}>
-            <h1 className="font-heading text-5xl font-bold leading-tight text-white drop-shadow-xl md:text-7xl">
+            <h1 className="font-heading text-4xl font-bold leading-tight text-white drop-shadow-xl md:text-6xl">
               Eventos
             </h1>
           </BlurFade>
@@ -97,11 +103,13 @@ export default function EventsPage() {
                   isEven ? "" : "lg:flex-row-reverse"
                 }`}
               >
-                <div className="w-full overflow-hidden rounded-[2rem] shadow-xl lg:w-1/2">
-                  <img
+                <div className="relative h-[320px] w-full overflow-hidden rounded-[2rem] shadow-xl md:h-[420px] lg:w-1/2">
+                  <Image
                     src={section.image}
                     alt={section.title}
-                    className="h-[320px] w-full object-cover md:h-[420px]"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
                   />
                 </div>
 
@@ -115,8 +123,8 @@ export default function EventsPage() {
                   <ul className="space-y-4 mb-8">
                     {section.items.map((item) => (
                       <li key={item} className="flex items-center gap-3">
-                        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--brand-orange)]/10">
-                          <Check className="h-4 w-4 text-[var(--brand-orange)]" />
+                        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-gold/10">
+                          <Check className="h-4 w-4 text-brand-gold" />
                         </div>
                         <span className="text-base font-medium text-[var(--brand-blue-dark)]">
                           {item}
@@ -125,10 +133,10 @@ export default function EventsPage() {
                     ))}
                   </ul>
                   <a
-                    href={`https://wa.me/573007980870?text=${encodeURIComponent(`Hola, estoy interesado en cotizar el servicio para: ${section.title}`)}`}
+                    href={`https://wa.me/573187080678?text=${encodeURIComponent(`Hola, estoy interesado en cotizar el servicio para: ${section.title}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#f4c45c] text-[var(--brand-blue-dark)] hover:bg-[#f0b830] font-bold rounded-xl px-6 py-3 inline-flex items-center gap-2 shadow-lg transition-all active:scale-95"
+                    className="bg-brand-gold text-[var(--brand-blue-dark)] hover:bg-brand-gold-dark font-bold rounded-xl px-6 py-3 inline-flex items-center gap-2 shadow-lg transition-all active:scale-95"
                   >
                     Cotizar <ArrowRight className="w-4 h-4" />
                   </a>

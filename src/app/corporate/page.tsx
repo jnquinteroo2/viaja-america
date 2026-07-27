@@ -17,7 +17,7 @@ const benefits = [
 
 export default function CorporatePage() {
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-background">
+    <div className="pt-28 pb-24 min-h-screen bg-background">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
           <div className="w-full lg:w-1/2">
@@ -40,7 +40,7 @@ export default function CorporatePage() {
                 </li>
               ))}
             </ul>
-            <Button size="lg" className="rounded-full h-14 px-8 text-base font-bold bg-[#f4c45c] text-[var(--brand-blue-dark)] shadow-lg transition-all hover:bg-[#f0b830] hover:shadow-xl active:scale-[0.98]">Contactar a un Asesor Corporativo</Button>
+            <Button size="lg" className="rounded-full h-14 px-8 text-base font-bold bg-brand-gold text-[var(--brand-blue-dark)] shadow-lg transition-all hover:bg-brand-gold-dark hover:shadow-xl active:scale-[0.98]">Contactar a un Asesor Corporativo</Button>
           </div>
           <div className="w-full lg:w-1/2">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px]">

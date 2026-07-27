@@ -25,14 +25,19 @@ export function HeroSection() {
         className="absolute inset-0 w-full h-full bg-gray-900"
       >
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background/90 z-10 pointer-events-none" />
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster="https://res.cloudinary.com/dvrz5uflr/video/upload/f_auto,q_auto,so_0/v1785183939/herosection_tidlzm.jpg"
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/herosection.mp4" type="video/mp4" />
+          <source
+            src="https://res.cloudinary.com/dvrz5uflr/video/upload/f_auto,q_auto/v1785183939/herosection_tidlzm.mp4"
+            type="video/mp4"
+          />
         </video>
       </motion.div>
 
@@ -54,7 +59,7 @@ export function HeroSection() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
         >
           Descubre el Mundo <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white">con Elegancia</span>
+          <span className="text-white">con Elegancia</span>
         </motion.h1>
         
         <motion.p 

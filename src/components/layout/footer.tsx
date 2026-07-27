@@ -16,6 +16,12 @@ const FacebookIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
 export function Footer() {
   return (
     <footer className="bg-[var(--brand-blue-dark)] pt-20 pb-10">
@@ -28,7 +34,7 @@ export function Footer() {
                 alt="Viaja América Logo" 
                 width={200}
                 height={64}
-                className="h-auto w-40 object-contain brightness-0 invert"
+                className="h-auto w-32 object-contain brightness-0 invert"
                 unoptimized
               />
             </Link>
@@ -42,20 +48,20 @@ export function Footer() {
             <h3 className="mb-6 font-heading text-lg font-semibold text-white">Contacto</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-white/70">
-                <Phone className="h-5 w-5 shrink-0 text-[var(--brand-orange)]" />
-                <a href="tel:3007980870" className="transition-colors hover:text-white">
-                  +57 300 798 0870
+                <Phone className="h-5 w-5 shrink-0 text-brand-gold" />
+                <a href="tel:3187080678" className="transition-colors hover:text-white">
+                  +57 318 708 0678
                 </a>
               </li>
               <li className="flex items-start gap-3 text-white/70">
-                <MapPin className="h-5 w-5 shrink-0 text-[var(--brand-orange)]" />
+                <MapPin className="h-5 w-5 shrink-0 text-brand-gold" />
                 <span>
                   Funza, Cundinamarca<br />
                   Colombia
                 </span>
               </li>
               <li className="flex items-start gap-3 text-white/70">
-                <Mail className="h-5 w-5 shrink-0 text-[var(--brand-orange)]" />
+                <Mail className="h-5 w-5 shrink-0 text-brand-gold" />
                 <a href="mailto:contacto@viajaamerica.com" className="transition-colors hover:text-white">
                   contacto@viajaamerica.com
                 </a>
@@ -66,10 +72,15 @@ export function Footer() {
           <div>
             <h3 className="mb-6 font-heading text-lg font-semibold text-white">Explorar</h3>
             <ul className="space-y-3">
-              {['Destinos', 'Corporativo', 'Paquetes', 'Nosotros'].map((item) => (
-                <li key={item}>
-                  <Link href={`/${item.toLowerCase()}`} className="text-white/70 transition-colors hover:text-white">
-                    {item}
+              {[
+                { label: "Destinos", href: "/destinations" },
+                { label: "Corporativo", href: "/corporate" },
+                { label: "Paquetes", href: "/packages" },
+                { label: "Nosotros", href: "/about" },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-white/70 transition-colors hover:text-white">
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -79,11 +90,14 @@ export function Footer() {
           <div>
             <h3 className="mb-6 font-heading text-lg font-semibold text-white">Síguenos</h3>
             <div className="mb-8 flex gap-4">
-              <a href="https://instagram.com/viajaamerica_" target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 p-3 text-white transition-all hover:text-[#f4c45c] hover:scale-110 hover:bg-white/15">
+              <a href="https://instagram.com/viajaamerica_" target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 p-3 text-white transition-all hover:text-brand-gold hover:scale-110 hover:bg-white/15">
                 <InstagramIcon className="w-6 h-6" />
               </a>
-              <a href="https://facebook.com/viajaamericacolombia" target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 p-3 text-white transition-all hover:text-[#f4c45c] hover:scale-110 hover:bg-white/15">
+              <a href="https://facebook.com/viajaamericacolombia" target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 p-3 text-white transition-all hover:text-brand-gold hover:scale-110 hover:bg-white/15">
                 <FacebookIcon className="w-6 h-6" />
+              </a>
+              <a href="https://www.tiktok.com/@agenciaviajaamerica" target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 p-3 text-white transition-all hover:text-brand-gold hover:scale-110 hover:bg-white/15">
+                <TikTokIcon className="w-6 h-6" />
               </a>
             </div>
             <h3 className="mb-6 font-heading text-lg font-semibold text-white">Legal</h3>

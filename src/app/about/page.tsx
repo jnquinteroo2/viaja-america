@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-background">
+    <div className="pt-28 pb-24 min-h-screen bg-background">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="w-full lg:w-1/2">
@@ -19,8 +19,7 @@ export default function AboutPage() {
           </div>
           
           <div className="w-full lg:w-1/2">
-            <h4 className="text-primary font-medium tracking-wider uppercase mb-4 text-sm">Quiénes Somos</h4>
-            <h1 className="text-4xl md:text-5xl font-heading font-semibold mb-6">Nuestra Historia</h1>
+            <h1 className="text-5xl md:text-6xl font-heading font-semibold mb-6 leading-tight">Nuestra Historia</h1>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
               En <strong className="text-foreground">Viaja América</strong>, con sede en Funza, Cundinamarca, somos una agencia de viajes comprometida con hacer realidad los sueños de nuestros clientes. Durante años, hemos operado con una filosofía basada en la confianza, la excelencia y la atención al detalle.
             </p>

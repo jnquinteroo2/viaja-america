@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es-CO" className="antialiased dark" suppressHydrationWarning>
+    <html lang="es-CO" className="antialiased" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${outfit.variable} antialiased selection:bg-primary/20 selection:text-primary flex flex-col min-h-screen`}
       >

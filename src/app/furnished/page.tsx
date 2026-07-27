@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Home, Sofa, Tv, Wifi, Star } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
 
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1560185007-5f0bb1866cab?auto=format&fit=crop&w=2850&q=80";
 
-const WA_NUMBER = "573007980870";
+const WA_NUMBER = "573187080678";
 
 const AMENITIES = [
   { icon: Home, label: "Totalmente Amoblado" },
@@ -69,27 +70,27 @@ const PROPERTIES = [
 
 export default function FurnishedPage() {
   return (
-    <main className="min-h-screen bg-white pt-24">
+    <main className="min-h-screen bg-white pt-20">
       <section className="relative h-[45vh] min-h-[400px] w-full overflow-hidden">
-        <div className="absolute inset-0">
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        >
           <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/40 to-brand-blue-dark/90" />
-          <motion.img
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+          <Image
             src={HERO_IMAGE}
             alt="Amoblados de Lujo"
-            className="h-full w-full object-cover"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover"
           />
-        </div>
+        </motion.div>
         <div className="container relative z-20 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 text-center">
-          <BlurFade delay={0.2}>
-            <span className="mb-4 block text-sm font-bold uppercase tracking-[0.2em] text-white/80 md:text-base">
-              Estancias Prolongadas
-            </span>
-          </BlurFade>
           <BlurFade delay={0.3}>
-            <h1 className="font-heading text-5xl font-bold leading-tight text-white drop-shadow-xl md:text-7xl">
+            <h1 className="font-heading text-4xl font-bold leading-tight text-white drop-shadow-xl md:text-6xl">
               Amoblados
             </h1>
           </BlurFade>
@@ -134,10 +135,12 @@ export default function FurnishedPage() {
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <div className="absolute inset-0 z-10 bg-gradient-to-t from-brand-blue-dark/60 to-transparent" />
-                  <motion.img
+                  <Image
                     src={p.image}
                     alt={p.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute right-4 top-4 z-20 flex items-center gap-1 rounded-full bg-white/90 px-3 py-1.5 backdrop-blur-md shadow-sm">
                     <Star className="h-4 w-4 fill-brand-blue text-brand-blue" />
@@ -166,7 +169,7 @@ export default function FurnishedPage() {
                       href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(`Hola, estoy interesado en cotizar el amoblado: ${p.title}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center rounded-full bg-[#f4c45c] px-6 py-2.5 text-sm font-bold text-[var(--brand-blue-dark)] shadow-lg transition-all hover:bg-[#f0b830] active:scale-95"
+                      className="inline-flex items-center justify-center rounded-full bg-brand-gold px-6 py-2.5 text-sm font-bold text-[var(--brand-blue-dark)] shadow-lg transition-all hover:bg-brand-gold-dark active:scale-95"
                     >
                       Cotizar
                     </a>

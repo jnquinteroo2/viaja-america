@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect, useId } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Plane } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -28,6 +28,10 @@ export function AirportAutocomplete({
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const instanceId = useId();
+  const listboxId = `${instanceId}-listbox`;
+  const activeOptionId =
+    highlightIndex >= 0 ? `${instanceId}-option-${highlightIndex}` : undefined;
 
   const doSearch = useCallback(async (q: string) => {
     if (q.length < 1) {
@@ -93,14 +97,20 @@ export function AirportAutocomplete({
 
   return (
     <div ref={containerRef} className={cn("relative flex-1", className)}>
-      <label className="mb-1 block text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+      <label htmlFor={instanceId} className="mb-1 block text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
         {label}
       </label>
       <div className="relative flex items-center">
         <MapPin className="absolute left-0 h-4 w-4 text-[var(--brand-blue)]/40" />
         <input
           ref={inputRef}
+          id={instanceId}
           type="text"
+          role="combobox"
+          aria-expanded={open}
+          aria-controls={listboxId}
+          aria-autocomplete="list"
+          aria-activedescendant={activeOptionId}
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
@@ -119,6 +129,9 @@ export function AirportAutocomplete({
       <AnimatePresence>
         {open && results.length > 0 && (
           <motion.ul
+            id={listboxId}
+            role="listbox"
+            aria-label={label}
             initial={{ opacity: 0, y: -6, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.96 }}
@@ -126,9 +139,12 @@ export function AirportAutocomplete({
             className="absolute left-0 top-full z-50 mt-2 w-72 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-2xl shadow-black/10"
           >
             {results.map((airport, i) => (
-              <li key={airport.iata}>
+              <li key={airport.iata} role="presentation">
                 <button
                   type="button"
+                  id={`${instanceId}-option-${i}`}
+                  role="option"
+                  aria-selected={i === highlightIndex}
                   onClick={() => selectAirport(airport)}
                   onMouseEnter={() => setHighlightIndex(i)}
                   className={cn(

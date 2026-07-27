@@ -9,7 +9,7 @@ import { BlurFade } from "@/components/ui/blur-fade";
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2850&q=80";
 
-const WA_NUMBER = "573007980870";
+const WA_NUMBER = "573187080678";
 
 const APARTMENTS = [
   {
@@ -18,63 +18,31 @@ const APARTMENTS = [
     description:
       "Apartamento amoblado en alquiler cuenta con dos habitaciones, sala comedor, cocina integral, nevera, lavadora, televisor, utensilios de cocina, ropa de cama, toallas. Incluye servicios de agua, luz, gas, internet. Zona verde.",
     images: [
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1560185007-5f0bb1866cab?auto=format&fit=crop&w=1200&q=80",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175060/fadbdd64-ecfb-4170-9f54-be9480d0b826.png_otribi.avif",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175060/671f877f-2a0e-4eaa-9ed4-e503dfa8843b.jpg_voqskz.avif",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175060/3fc4ee68-2db7-4c66-9559-18b158fece95.jpg_hxvleg.avif",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175060/dec882cb-60de-46bb-921f-fcbebd0a783a.jpg_jnqrxe.avif",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175060/37aeb211-e43b-4cda-9dc0-38712535a614.jpg_dxnscn.avif",
     ],
   },
   {
     id: 2,
-    title: "201 GREEN HOUSE",
+    title: "Green House",
     description:
-      "Amplio apartamento amoblado con tres habitaciones, dos baños, sala comedor, cocina integral equipada, lavadora, secadora, nevera, wifi de alta velocidad, parqueadero privado. Perfecto para familias o grupos corporativos.",
+      "Apartamento amoblado con sala comedor, cocina integral equipada, lavadora, wifi de alta velocidad y parqueadero. Ideal para estadías corporativas, familias o grupos, con todas las comodidades de una estancia prolongada.",
     images: [
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1529408686214-b48b8532f72c?auto=format&fit=crop&w=1200&q=80",
-    ],
-  },
-  {
-    id: 3,
-    title: "202 GREEN HOUSE",
-    description:
-      "Acogedor apartamento amoblado con una habitación principal, estudio, sala comedor, cocina integral, nevera, lavadora, televisor smart, utensilios de cocina, ropa de cama, toallas. Ideal para viajeros de negocios y estadías cortas.",
-    images: [
-      "https://images.unsplash.com/photo-1560185007-5f0bb1866cab?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1529408686214-b48b8532f72c?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1200&q=80",
-    ],
-  },
-  {
-    id: 4,
-    title: "301 GREEN HOUSE",
-    description:
-      "Penthouse amoblado de lujo con terraza panorámica, tres habitaciones, tres baños, sala comedor, cocina gourmet, nevera doble, lavadora, secadora, televisores en todas las habitaciones, internet fibra óptica, parqueadero doble.",
-    images: [
-      "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1200&q=80",
-    ],
-  },
-  {
-    id: 5,
-    title: "101 GREEN HOUSE",
-    description:
-      "Apartamento amoblado en primer piso con acceso directo al jardín. Dos habitaciones, sala comedor, cocina integral, nevera, lavadora, televisor, utensilios de cocina, ropa de cama, toallas. Incluye servicios públicos y wifi. Zona tranquila.",
-    images: [
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1564078516393-caf8b3a97741?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1529408686214-b48b8532f72c?auto=format&fit=crop&w=1200&q=80",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175062/unnamed-6_wroxai.jpg",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175062/unnamed-3_s2ysuq.jpg",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175062/unnamed-2_cganqn.jpg",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175062/unnamed-4_zo087s.jpg",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175062/unnamed-7_njdtt4.jpg",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175062/unnamed-5_suv6k2.jpg",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175062/unnamed_fukfog.jpg",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175061/unnamed-12_phcjki.jpg",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175061/unnamed-11_ckevto.jpg",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175061/unnamed-9_fqnbx1.jpg",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175061/unnamed-10_tudvtz.jpg",
+      "https://res.cloudinary.com/dvrz5uflr/image/upload/v1785175061/unnamed-8_yt1bgt.jpg",
     ],
   },
 ];
@@ -219,7 +187,7 @@ export default function ApartmentsPage() {
   } | null>(null);
 
   return (
-    <main className="min-h-screen bg-white pt-24">
+    <main className="min-h-screen bg-white pt-20">
       <section className="relative h-[45vh] min-h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/40 to-[var(--brand-blue-dark)]/90" />
@@ -234,7 +202,7 @@ export default function ApartmentsPage() {
         </div>
         <div className="container relative z-20 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 text-center">
           <BlurFade delay={0.2}>
-            <h1 className="font-heading text-5xl font-bold leading-tight text-white drop-shadow-xl md:text-7xl">
+            <h1 className="font-heading text-4xl font-bold leading-tight text-white drop-shadow-xl md:text-6xl">
               Apartamentos
             </h1>
           </BlurFade>
@@ -271,7 +239,7 @@ export default function ApartmentsPage() {
                     href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(`Hola, estoy interesado en cotizar el apartamento: ${apt.title}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-8 inline-flex items-center justify-center rounded-full bg-[#f4c45c] px-10 py-4 text-base font-bold text-[var(--brand-blue-dark)] shadow-lg transition-all hover:bg-[#f0b830] hover:shadow-xl active:scale-[0.98]"
+                    className="mt-8 inline-flex items-center justify-center rounded-full bg-brand-gold px-10 py-4 text-base font-bold text-[var(--brand-blue-dark)] shadow-lg transition-all hover:bg-brand-gold-dark hover:shadow-xl active:scale-[0.98]"
                   >
                     COTIZAR
                   </a>

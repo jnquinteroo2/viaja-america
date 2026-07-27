@@ -50,6 +50,7 @@ export function HeroSearchSection() {
   const [childrenCount, setChildrenCount] = useState(0);
   const [infants, setInfants] = useState(0);
   const [swapKey, setSwapKey] = useState(0);
+  const [searchError, setSearchError] = useState<string | null>(null);
 
   const swapLocations = () => {
     const prevOrigin = originText;
@@ -68,17 +69,19 @@ export function HeroSearchSection() {
     const destIATA = destAirport?.iata || null;
 
     if (!originIATA || !destIATA) {
-      alert("Por favor selecciona un origen y destino de la lista desplegable.");
+      setSearchError("Selecciona un origen y destino de la lista desplegable.");
       return;
     }
     if (!startDate) {
-      alert("Por favor selecciona la fecha de salida.");
+      setSearchError("Selecciona la fecha de salida.");
       return;
     }
     if (tripType === "Ida y vuelta" && !endDate) {
-      alert("Por favor selecciona la fecha de regreso.");
+      setSearchError("Selecciona la fecha de regreso.");
       return;
     }
+
+    setSearchError(null);
 
     const dateSegment =
       tripType === "Solo ida" || !endDate
@@ -98,16 +101,21 @@ export function HeroSearchSection() {
           loop
           muted
           playsInline
+          preload="auto"
+          poster="https://res.cloudinary.com/dvrz5uflr/video/upload/f_auto,q_auto,so_0/v1785183939/herosection_tidlzm.jpg"
           className="absolute z-0 h-full w-full object-cover object-center"
         >
-          <source src="/herosection.mp4" type="video/mp4" />
+          <source
+            src="https://res.cloudinary.com/dvrz5uflr/video/upload/f_auto,q_auto/v1785183939/herosection_tidlzm.mp4"
+            type="video/mp4"
+          />
         </video>
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/40 to-[var(--brand-blue-dark)]/90" />
       </div>
 
       <div className="container relative z-20 mx-auto flex w-full max-w-6xl flex-col items-center px-4 pt-16 sm:pt-24 md:pt-32 pb-16 md:px-8">
         <motion.h1
-          className="mb-5 sm:mb-8 md:mb-12 text-center font-heading text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold leading-tight text-white drop-shadow-2xl"
+          className="mb-5 sm:mb-8 md:mb-12 text-center font-heading text-xl sm:text-2xl md:text-4xl lg:text-6xl font-bold leading-tight text-white drop-shadow-2xl"
           initial={blurFadeInitial}
           animate={blurFadeAnimate}
         >
@@ -216,6 +224,16 @@ export function HeroSearchSection() {
                 <span className="lg:hidden">Buscar</span>
               </button>
             </div>
+
+            {searchError && (
+              <p
+                role="alert"
+                aria-live="polite"
+                className="mt-3 px-2 text-sm font-medium text-destructive"
+              >
+                {searchError}
+              </p>
+            )}
           </div>
         </motion.div>
       </div>

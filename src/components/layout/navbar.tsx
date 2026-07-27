@@ -21,7 +21,7 @@ const NAV_ITEMS = [
   { label: "Alojamiento", href: "/accommodations" },
   { label: "Apartamentos", href: "/apartments" },
   { label: "Vuelos", href: "/flights" },
-  { label: "Carros", href: "/cars" },
+  { label: "Vehículos", href: "/cars" },
   { label: "Eventos", href: "/events" },
   { label: "Contacto", href: "/contact" },
 ];
@@ -30,11 +30,13 @@ function NavLink({
   href,
   label,
   variant,
+  isHovered,
   onHover,
 }: {
   href: string;
   label: string;
   variant: "transparent" | "solid";
+  isHovered: boolean;
   onHover: (label: string | null) => void;
 }) {
   return (
@@ -44,12 +46,25 @@ function NavLink({
         "relative px-3 py-2 text-base tracking-wide transition-colors duration-300",
         variant === "transparent"
           ? "font-medium text-white/90 hover:text-white"
-          : "font-semibold text-[var(--brand-blue-dark)] hover:text-[var(--brand-blue)]"
+          : "font-semibold text-[var(--brand-blue-dark)] hover:text-brand-gold-dark"
       )}
       onMouseEnter={() => onHover(label)}
       onMouseLeave={() => onHover(null)}
     >
       {label}
+      {isHovered && (
+        <motion.div
+          layoutId="nav-underline"
+          className={cn(
+            "absolute -bottom-1 left-3 right-3 h-[2px]",
+            variant === "transparent" ? "bg-white" : "bg-brand-gold-dark"
+          )}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 24 }}
+        />
+      )}
     </Link>
   );
 }
@@ -71,7 +86,7 @@ export function Navbar() {
   return (
     <motion.header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 flex h-24 items-center transition-all duration-500",
+        "fixed inset-x-0 top-0 z-50 flex h-20 items-center transition-all duration-500",
         scrolled || !isHome
           ? "border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-xl"
           : "bg-transparent"
@@ -84,7 +99,7 @@ export function Navbar() {
             alt="Viaja América"
             width={180}
             height={60}
-            className="h-10 w-auto object-contain md:h-16"
+            className="h-8 w-auto object-contain md:h-12"
             priority
             unoptimized
           />
@@ -97,24 +112,10 @@ export function Navbar() {
               href={item.href}
               label={item.label}
               variant={variant}
+              isHovered={hovered === item.label}
               onHover={setHovered}
             />
           ))}
-          <div className="relative hidden lg:block">
-            {hovered != null && (
-              <motion.div
-                layoutId="nav-underline"
-                className={cn(
-                  "absolute -bottom-1 left-0 right-0 h-[2px]",
-                  variant === "transparent" ? "bg-white" : "bg-[var(--brand-blue)]"
-                )}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ type: "spring", stiffness: 300, damping: 24 }}
-              />
-            )}
-          </div>
         </nav>
 
         <div className="hidden lg:block" />
@@ -143,7 +144,7 @@ export function Navbar() {
                     alt="Viaja América"
                     width={140}
                     height={48}
-                    className="h-10 w-auto object-contain"
+                    className="h-8 w-auto object-contain"
                     unoptimized
                   />
                 </div>

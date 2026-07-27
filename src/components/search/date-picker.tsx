@@ -70,6 +70,17 @@ export function DateRangePicker({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
   const nextMonth = () =>
     setViewDate(new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1));
   const prevMonth = () =>
@@ -121,7 +132,7 @@ export function DateRangePicker({
     const firstDayOfMonth = new Date(year, month, 1).getDay();
 
     return (
-      <div className="w-full flex-1 md:w-[320px]">
+      <div className="w-full min-w-[280px] flex-1 md:w-[320px]">
         <div className="relative mb-6 flex items-center justify-center px-2">
           {dateOffset === 0 && (
             <button
@@ -219,11 +230,22 @@ export function DateRangePicker({
   return (
     <div
       ref={wrapperRef}
+      role="button"
+      tabIndex={0}
+      aria-haspopup="dialog"
+      aria-expanded={isOpen}
+      aria-label="Seleccionar fechas de viaje"
       className={cn(
-        "relative flex flex-1 cursor-pointer rounded-full transition-colors hover:bg-gray-100/80",
+        "relative flex flex-1 cursor-pointer rounded-full transition-colors hover:bg-gray-100/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-blue)]",
         className
       )}
       onClick={() => !isOpen && setIsOpen(true)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setIsOpen(true);
+        }
+      }}
     >
       <div className="flex-1 px-6 py-3">
         <label className="block cursor-pointer text-[11px] font-bold uppercase tracking-wider text-gray-800">
@@ -263,7 +285,11 @@ export function DateRangePicker({
       )}
 
       {isOpen && (
-        <div className="absolute left-1/2 top-[110%] z-[100] mt-2 flex -translate-x-1/2 flex-col gap-8 rounded-[2rem] border border-gray-100 bg-white p-6 shadow-2xl md:left-0 md:translate-x-0 md:flex-row">
+        <div
+          role="dialog"
+          aria-label="Calendario de fechas"
+          className="fixed inset-x-4 top-1/2 z-[100] flex max-h-[85vh] -translate-y-1/2 flex-col gap-8 overflow-y-auto rounded-[2rem] border border-gray-100 bg-white p-6 shadow-2xl md:absolute md:inset-x-auto md:left-0 md:right-auto md:top-[110%] md:mt-2 md:max-h-none md:translate-y-0 md:flex-row md:overflow-visible"
+        >
           {renderMonth(0)}
           <div className="hidden md:block">{renderMonth(1)}</div>
         </div>

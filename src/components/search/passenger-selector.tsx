@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function PassengerSelector({
@@ -21,15 +21,27 @@ export function PassengerSelector({
   const [isOpen, setIsOpen] = useState(false);
   const total = adults + childrenCount + (infants || 0);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setIsOpen(false);
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
   return (
     <div className="relative flex-1">
-      <label className="mb-1 block text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+      <label id="passenger-selector-label" className="mb-1 block text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
         Pasajeros
       </label>
       <button
         type="button"
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
+        aria-labelledby="passenger-selector-label"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center py-1.5 text-left text-sm font-medium text-[var(--brand-blue-dark)] outline-none"
+        className="flex w-full items-center py-1.5 text-left text-sm font-medium text-[var(--brand-blue-dark)] outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-blue)]/50 rounded"
       >
         {total === 0 ? "¿Cuántos?" : `${total} ${total === 1 ? "viajero" : "viajeros"}`}
       </button>
@@ -42,6 +54,8 @@ export function PassengerSelector({
               onClick={() => setIsOpen(false)}
             />
             <motion.div
+              role="dialog"
+              aria-label="Selector de pasajeros"
               initial={{ opacity: 0, y: -6, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -6, scale: 0.96 }}
@@ -57,16 +71,18 @@ export function PassengerSelector({
                   <div className="flex items-center gap-3">
                     <button
                       type="button"
+                      aria-label="Disminuir número de adultos"
                       onClick={() => setAdults(Math.max(1, adults - 1))}
                       className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-gray-900 hover:text-gray-900"
                     >
                       &minus;
                     </button>
-                    <span className="w-4 text-center text-sm font-semibold text-gray-900">
+                    <span className="w-4 text-center text-sm font-semibold text-gray-900" aria-live="polite">
                       {adults}
                     </span>
                     <button
                       type="button"
+                      aria-label="Aumentar número de adultos"
                       onClick={() => setAdults(adults + 1)}
                       className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-gray-900 hover:text-gray-900"
                     >
@@ -82,16 +98,18 @@ export function PassengerSelector({
                   <div className="flex items-center gap-3">
                     <button
                       type="button"
+                      aria-label="Disminuir número de niños"
                       onClick={() => setChildrenCount(Math.max(0, childrenCount - 1))}
                       className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-gray-900 hover:text-gray-900"
                     >
                       &minus;
                     </button>
-                    <span className="w-4 text-center text-sm font-semibold text-gray-900">
+                    <span className="w-4 text-center text-sm font-semibold text-gray-900" aria-live="polite">
                       {childrenCount}
                     </span>
                     <button
                       type="button"
+                      aria-label="Aumentar número de niños"
                       onClick={() => setChildrenCount(childrenCount + 1)}
                       className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-gray-900 hover:text-gray-900"
                     >
@@ -108,16 +126,18 @@ export function PassengerSelector({
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
+                        aria-label="Disminuir número de bebés"
                         onClick={() => setInfants(Math.max(0, (infants || 0) - 1))}
                         className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-gray-900 hover:text-gray-900"
                       >
                         &minus;
                       </button>
-                      <span className="w-4 text-center text-sm font-semibold text-gray-900">
+                      <span className="w-4 text-center text-sm font-semibold text-gray-900" aria-live="polite">
                         {infants || 0}
                       </span>
                       <button
                         type="button"
+                        aria-label="Aumentar número de bebés"
                         onClick={() => setInfants((infants || 0) + 1)}
                         className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-gray-900 hover:text-gray-900"
                       >

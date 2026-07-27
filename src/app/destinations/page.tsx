@@ -20,7 +20,7 @@ const destinations = [
 
 export default function DestinationsPage() {
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-background">
+    <div className="pt-28 pb-24 min-h-screen bg-background">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-heading font-semibold mb-6">Nuestros Destinos</h1>
