@@ -49,7 +49,12 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-white/70">
                 <Phone className="h-5 w-5 shrink-0 text-brand-gold" />
-                <a href="tel:3187080678" className="transition-colors hover:text-white">
+                <a
+                  href={`https://wa.me/573187080678?text=${encodeURIComponent("Hola, quiero solicitar información.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-white"
+                >
                   +57 318 708 0678
                 </a>
               </li>
@@ -62,8 +67,8 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-white/70">
                 <Mail className="h-5 w-5 shrink-0 text-brand-gold" />
-                <a href="mailto:contacto@viajaamerica.com" className="transition-colors hover:text-white">
-                  contacto@viajaamerica.com
+                <a href="mailto:administrativo1@viajaamerica.com.co" className="transition-colors hover:text-white">
+                  administrativo1@viajaamerica.com.co
                 </a>
               </li>
             </ul>

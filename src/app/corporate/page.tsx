@@ -45,7 +45,7 @@ export default function CorporatePage() {
           <div className="w-full lg:w-1/2">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px]">
               <Image 
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
                 alt="Reunión de negocios"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

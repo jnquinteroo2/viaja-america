@@ -67,7 +67,7 @@
   --secondary: #f4f7f9;
   --secondary-foreground: #18526e;
   --muted: #f4f7f9;
-  --muted-foreground: #7b7a7a;
+  --muted-foreground: #6b6a6a;
   --accent: #f4f7f9;
   --accent-foreground: #18526e;
   --destructive: #ef4444;
@@ -144,6 +144,17 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-tight;
     color: var(--brand-blue);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

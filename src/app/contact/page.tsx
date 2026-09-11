@@ -21,11 +21,12 @@ const CONTACT_CARDS = [
     icon: Phone,
     title: "Llámanos",
     detail: "+57 318 708 0678",
+    href: `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola, quiero solicitar información.")}`,
   },
   {
     icon: Mail,
     title: "Escríbenos",
-    detail: "contacto@viajaamerica.com",
+    detail: "administrativo1@viajaamerica.com.co",
   },
   {
     icon: Clock,
@@ -85,18 +86,29 @@ export default function ContactPage() {
 
       <section className="container mx-auto max-w-7xl px-6 py-12 md:px-12 md:py-16">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {CONTACT_CARDS.map(({ icon: Icon, title, detail }, i) => (
-            <BlurFade key={title} delay={0.1 * i}>
-              <div className="flex flex-col items-center gap-3 rounded-3xl border border-gray-100 bg-white p-6 shadow-md transition-shadow hover:shadow-xl">
+          {CONTACT_CARDS.map(({ icon: Icon, title, detail, href }, i) => (
+            <BlurFade key={title} delay={0.1 * i} className="h-full">
+              <div className="flex h-full flex-col items-center gap-3 rounded-3xl border border-gray-100 bg-white p-6 text-center shadow-md transition-shadow hover:shadow-xl">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--brand-blue)]/10">
                   <Icon className="h-6 w-6 text-[var(--brand-blue)]" />
                 </div>
                 <h3 className="font-heading text-lg font-bold text-[var(--brand-blue-dark)]">
                   {title}
                 </h3>
-                <p className="whitespace-pre-line text-center text-sm leading-relaxed text-muted-foreground">
-                  {detail}
-                </p>
+                {href ? (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="whitespace-pre-line text-center text-sm leading-relaxed text-muted-foreground transition-colors hover:text-[var(--brand-blue)]"
+                  >
+                    {detail}
+                  </a>
+                ) : (
+                  <p className="whitespace-pre-line text-center text-sm leading-relaxed text-muted-foreground">
+                    {detail}
+                  </p>
+                )}
               </div>
             </BlurFade>
           ))}

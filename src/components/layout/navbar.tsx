@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -84,89 +84,111 @@ export function Navbar() {
   const variant = scrolled || !isHome ? "solid" : "transparent";
 
   return (
-    <motion.header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 flex h-20 items-center transition-all duration-500",
-        scrolled || !isHome
-          ? "border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-xl"
-          : "bg-transparent"
-      )}
-    >
-      <div className="flex w-full max-w-full items-center justify-between px-6 md:px-12">
-        <Link href="/" className="relative z-50 shrink-0">
-          <Image
-            src={LOGO_URL}
-            alt="Viaja América"
-            width={180}
-            height={60}
-            className="h-8 w-auto object-contain md:h-12"
-            priority
-            unoptimized
-          />
-        </Link>
-
-        <nav className="hidden items-center gap-6 lg:flex">
-          {NAV_ITEMS.map((item) => (
-            <NavLink
-              key={item.label}
-              href={item.href}
-              label={item.label}
-              variant={variant}
-              isHovered={hovered === item.label}
-              onHover={setHovered}
+    <>
+      <motion.header
+        className={cn(
+          "fixed inset-x-0 top-0 z-40 flex h-20 items-center transition-all duration-500",
+          scrolled || !isHome
+            ? "border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-xl"
+            : "bg-transparent"
+        )}
+      >
+        <div className="flex w-full max-w-full items-center justify-between px-6 md:px-12">
+          <Link href="/" className="relative shrink-0">
+            <Image
+              src={LOGO_URL}
+              alt="Viaja América"
+              width={180}
+              height={60}
+              className="h-8 w-auto object-contain md:h-12"
+              priority
+              unoptimized
             />
-          ))}
-        </nav>
+          </Link>
 
-        <div className="hidden lg:block" />
-
-        <div className="lg:hidden">
-          <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-            <SheetTrigger
-              className={cn(
-                "inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                menuOpen
-                  ? "relative z-[60] bg-[var(--brand-blue-dark)] text-white shadow-lg"
-                  : variant === "transparent"
-                    ? "text-white hover:bg-white/20"
-                    : "text-[var(--brand-blue)] hover:bg-secondary"
-              )}
-            >
-              {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[85vw] sm:w-[400px] border-l-0 bg-white p-0">
-              <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
-
-              <div className="flex h-full flex-col overflow-y-auto">
-                <div className="flex items-center border-b border-gray-100 p-6">
-                  <Image
-                    src={LOGO_URL}
-                    alt="Viaja América"
-                    width={140}
-                    height={48}
-                    className="h-8 w-auto object-contain"
-                    unoptimized
-                  />
-                </div>
-
-                <nav className="flex flex-1 flex-col px-4 py-6">
-                  {NAV_ITEMS.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="flex items-center justify-between rounded-2xl px-4 py-4 text-lg font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-[var(--brand-blue-dark)] active:bg-gray-100"
-                    >
-                      {item.label}
-                      <ChevronRight className="h-5 w-5 text-gray-400" />
-                    </Link>
-                  ))}
-                </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
+          <nav className="hidden items-center gap-6 lg:flex">
+            {NAV_ITEMS.map((item) => (
+              <NavLink
+                key={item.label}
+                href={item.href}
+                label={item.label}
+                variant={variant}
+                isHovered={hovered === item.label}
+                onHover={setHovered}
+              />
+            ))}
+          </nav>
         </div>
-      </div>
-    </motion.header>
+      </motion.header>
+
+      <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+        <SheetTrigger
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          className={cn(
+            "fixed right-6 top-4 z-[70] inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:hidden md:right-12",
+            menuOpen
+              ? "bg-[var(--brand-blue-dark)] text-white shadow-lg"
+              : variant === "transparent"
+                ? "text-white hover:bg-white/20"
+                : "text-[var(--brand-blue)] hover:bg-secondary"
+          )}
+        >
+          <span className="relative flex h-4 w-6 flex-col items-center justify-center">
+            <motion.span
+              className="absolute h-0.5 w-6 rounded-full bg-current"
+              animate={menuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -6 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            />
+            <motion.span
+              className="absolute h-0.5 w-6 rounded-full bg-current"
+              animate={menuOpen ? { opacity: 0, scale: 0.4 } : { opacity: 1, scale: 1 }}
+              transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            />
+            <motion.span
+              className="absolute h-0.5 w-6 rounded-full bg-current"
+              animate={menuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 6 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            />
+          </span>
+        </SheetTrigger>
+
+        <SheetContent
+          side="right"
+          showCloseButton={false}
+          className="z-50 border-l-0 bg-white p-0"
+        >
+          <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
+
+          <div className="flex h-full flex-col overflow-y-auto">
+            <div className="flex h-20 shrink-0 items-center border-b border-gray-100 px-6 md:px-12">
+              <Link href="/" onClick={() => setMenuOpen(false)} className="shrink-0">
+                <Image
+                  src={LOGO_URL}
+                  alt="Viaja América"
+                  width={180}
+                  height={60}
+                  className="h-8 w-auto object-contain md:h-12"
+                  unoptimized
+                />
+              </Link>
+            </div>
+
+            <nav className="flex flex-1 flex-col px-4 py-6 md:px-10">
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between rounded-2xl px-4 py-4 text-lg font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-[var(--brand-blue-dark)] active:bg-gray-100"
+                >
+                  {item.label}
+                  <ChevronRight className="h-5 w-5 text-gray-400" />
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </SheetContent>
+      </Sheet>
+    </>
   );
 }
