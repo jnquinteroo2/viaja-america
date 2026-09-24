@@ -44,7 +44,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div>
+          <div className="min-w-0">
             <h3 className="mb-6 font-heading text-lg font-semibold text-white">Contacto</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-white/70">
@@ -67,7 +67,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-white/70">
                 <Mail className="h-5 w-5 shrink-0 text-brand-gold" />
-                <a href="mailto:administrativo1@viajaamerica.com.co" className="transition-colors hover:text-white">
+                <a href="mailto:administrativo1@viajaamerica.com.co" className="min-w-0 [overflow-wrap:anywhere] transition-colors hover:text-white">
                   administrativo1@viajaamerica.com.co
                 </a>
               </li>
