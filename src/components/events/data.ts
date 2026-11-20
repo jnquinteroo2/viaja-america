@@ -4,17 +4,13 @@ export function waLink(message: string) {
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-/**
- * Video de eventos (slide 4 del brochure).
- * TODO: pegar aquí la URL de Cloudinary cuando el video esté subido, con
- * f_auto,q_auto después de "/upload/". Mientras esté vacío, el hero y el
- * bloque de experiencia usan una imagen.
- */
-export const EVENTS_VIDEO_URL = "";
+/** Video de eventos (brochure Viaja América) en Cloudinary. */
+export const EVENTS_VIDEO_URL =
+  "https://res.cloudinary.com/dvrz5uflr/video/upload/f_auto,q_auto/v1795187961/Brochure_Viaja_Ame%CC%81rica_gwwm2s.mp4";
 
-/** Poster del video: mismo asset de Cloudinary pidiendo el frame 0 como imagen. */
-export function videoPoster(url: string) {
-  return url.replace("/upload/", "/upload/so_0/").replace(/\.mp4$/, ".jpg");
+/** Poster del video: mismo asset de Cloudinary pidiendo un frame como imagen. */
+export function videoPoster(url: string, second = 1) {
+  return url.replace("/upload/", `/upload/so_${second}/`).replace(/\.mp4$/, ".jpg");
 }
 
 /** Logos recortados del slide "Nuestros clientes" del brochure. */

@@ -1,23 +1,26 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Briefcase, Music, Trophy } from "lucide-react";
-import { BlurFade } from "@/components/ui/blur-fade";
+import { ArrowRight } from "lucide-react";
 import { LogoMarquee } from "@/components/events/logo-marquee";
 
 const CATEGORIES = [
   {
-    icon: Trophy,
-    title: "Deportivos",
-    text: "Alojamiento, transporte y alimentación para equipos y staff en competencias.",
+    title: "Eventos deportivos",
+    description: "Equipos y staff",
+    image:
+      "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1000&q=80",
   },
   {
-    icon: Briefcase,
-    title: "Corporativos",
-    text: "Convenciones, incentivos y reuniones a la altura de tu marca.",
+    title: "Eventos empresariales",
+    description: "Convenciones e incentivos",
+    image:
+      "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1000&q=80",
   },
   {
-    icon: Music,
-    title: "Culturales y musicales",
-    text: "Logística para artistas, producción e invitados en festivales y conciertos.",
+    title: "Eventos de temporada",
+    description: "Navidad y fin de año",
+    image:
+      "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80",
   },
 ];
 
@@ -25,42 +28,48 @@ export function EventsHighlightSection() {
   return (
     <section className="relative z-10 bg-white py-24 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <BlurFade className="max-w-2xl">
+        <div className="mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
+          <div className="max-w-2xl">
             <h2 className="mb-4 text-sm font-medium uppercase tracking-wider text-brand-blue">
               Eventos
             </h2>
             <h3 className="font-heading text-4xl font-semibold tracking-tight text-[var(--brand-blue-dark)] md:text-5xl">
-              Logística para eventos que no pueden fallar
+              Logística completa para tu evento
             </h3>
-          </BlurFade>
+          </div>
           <Link
             href="/events"
-            className="group flex items-center gap-2 font-semibold text-brand-blue transition-colors hover:text-brand-gold-dark"
+            className="group flex items-center gap-2 font-medium text-brand-blue transition-colors hover:text-brand-gold-dark"
           >
             Ver eventos
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {CATEGORIES.map(({ icon: Icon, title, text }, i) => (
-            <BlurFade key={title} delay={0.1 * i}>
-              <Link
-                href="/events#servicios"
-                className="group flex h-full flex-col rounded-[2rem] border border-gray-100 bg-gray-50/60 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-gold/50 hover:bg-white hover:shadow-xl"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-blue/10 transition-colors group-hover:bg-brand-gold/20">
-                  <Icon className="h-6 w-6 text-brand-blue" />
-                </div>
-                <h4 className="mt-6 font-heading text-2xl font-bold text-[var(--brand-blue-dark)]">
-                  {title}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {CATEGORIES.map((category) => (
+            <Link
+              key={category.title}
+              href="/events"
+              className="group relative block h-80 overflow-hidden rounded-2xl shadow-lg md:h-[400px]"
+            >
+              <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <Image
+                src={category.image}
+                alt={category.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute bottom-0 left-0 z-20 w-full p-8">
+                <span className="mb-2 block text-sm font-medium text-slate-300">
+                  {category.description}
+                </span>
+                <h4 className="font-heading text-2xl font-semibold text-white md:text-3xl">
+                  {category.title}
                 </h4>
-                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                  {text}
-                </p>
-              </Link>
-            </BlurFade>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
