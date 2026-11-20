@@ -17,12 +17,12 @@ import { cn } from "@/lib/utils";
 const LOGO_URL = "https://viajaamerica.com/wp-content/uploads/2022/01/logo1.png";
 
 const NAV_ITEMS = [
+  { label: "Eventos", href: "/events" },
   { label: "Paquetes", href: "/packages" },
+  { label: "Vuelos", href: "/flights" },
   { label: "Alojamiento", href: "/accommodations" },
   { label: "Apartamentos", href: "/apartments" },
-  { label: "Vuelos", href: "/flights" },
   { label: "Vehículos", href: "/cars" },
-  { label: "Eventos", href: "/events" },
   { label: "Contacto", href: "/contact" },
 ];
 

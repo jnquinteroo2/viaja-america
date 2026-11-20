@@ -78,6 +78,7 @@ export function Footer() {
             <h3 className="mb-6 font-heading text-lg font-semibold text-white">Explorar</h3>
             <ul className="space-y-3">
               {[
+                { label: "Eventos", href: "/events" },
                 { label: "Destinos", href: "/destinations" },
                 { label: "Corporativo", href: "/corporate" },
                 { label: "Paquetes", href: "/packages" },

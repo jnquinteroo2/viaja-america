@@ -1,6 +1,7 @@
 import { HeroSearchSection } from "@/components/home/hero-search";
 import { DestinationsSection } from "@/components/home/destinations";
 import { CorporateSection } from "@/components/home/corporate";
+import { EventsHighlightSection } from "@/components/home/events-highlight";
 import { MessageCircle } from "lucide-react";
 
 const WA_NUMBER = "573187080678";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <>
       <HeroSearchSection />
+      <EventsHighlightSection />
       <DestinationsSection />
       <CorporateSection />
 
